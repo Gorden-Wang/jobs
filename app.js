@@ -9,9 +9,10 @@ var server = http.createServer(function (req, res) {
     var param = util.getParam(req);
     var JSONP = util.getJSONPName(req);
     if (JSON.stringify(param) != "{}") {
+        console.log(param);
         util.router(param, function (resdata) {
 
-            console.log(resdata)
+            console.log(resdata);
             res.writeHead(200, {"Content-Type": "text/html"})
             res.end(util.makeJSONP(JSONP, resdata))
         });
