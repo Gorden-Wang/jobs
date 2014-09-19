@@ -3,6 +3,7 @@ var url = require("url");
 var qs = require("querystring");
 var util = require("./lib/util");
 var db = require("./lib/db");
+var sys = require('./lib/sys.js');
 
 util = new util();
 
