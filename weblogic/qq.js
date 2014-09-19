@@ -8,7 +8,6 @@ var $ = require("node-jquery");
 var db = require("../lib/qqdb");
 var util = require("../lib/util");
 var request = require("request");
-var Thenjs = require("thenjs");
 util = new util();
 var d = new db();
 
