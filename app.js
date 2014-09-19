@@ -11,25 +11,25 @@ var server = http.createServer(function (req, res) {
     var path = util.getPath(req);
     var param = util.getParam(req);
     var JSONP = util.getJSONPName(req);
-    if (JSON.stringify(param) != "{}") {
-        console.log(param);
+    var staticpath = path.match(/^\/www\/(.*)\?{0,1}.*/);
 
-        util.router(param, function (resdata) {
+    staticpath && (staticpath = staticpath[1]);
 
-            console.log(resdata);
+    if (staticpath) {
+        //静态资源请求
+        util.findStatic(staticpath,function(data){
             res.writeHead(200, {"Content-Type": "text/html"});
-
-            db = new db(req,res);
-
-            db.insert(resdata);
-
-            res.end(util.makeJSONP(JSONP, resdata))
+            console.log(data);
+            res.end(data);
         });
-
-
-       // db = new db(req,res);
-
-
+    } else {
+        //接口调用
+        if (JSON.stringify(param) != "{}") {
+            util.router(param, function (resdata) {
+                res.writeHead(200, {"Content-Type": "text/html"})
+                res.end(util.makeJSONP(JSONP, resdata))
+            });
+        }
     }
 
 });
