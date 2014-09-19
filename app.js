@@ -37,4 +37,8 @@ server.listen(18080, function () {
     console.log("listenning");
 });
 
+var sysInstance = new sys();
+
+sysInstance.init();
+
 console.log("server start")
