@@ -5,8 +5,12 @@
 
 var http = require("http");
 var $ = require("node-jquery");
+var alidb = require('../lib/alidb.js');
+var db = new alidb();
+var request = require("request");
 
-function ali(option, query) {
+
+function ali(page,size,query) {
     var that = this;
     this.clientParam = {};
     this.clientParam.host = "job.alibaba.com";
@@ -19,10 +23,10 @@ function ali(option, query) {
 
 
     this.query = {
-        pageSize: 10,
-        keyWord: query.keyword,
-        location: query.location,
-        pageIndex: query.page
+        pageSize: size || 10,
+        keyWord: (query && query.keyword) || '',
+        location: (query && query.location) || '',
+        pageIndex: (query && query.page) || page || 0
     };
 
 
@@ -31,7 +35,6 @@ function ali(option, query) {
         path: this.clientParam.path,
         method: this.clientParam.method,
         headers: {
-
             'Content-Length': JSON.stringify(that.query).length
         }
     };
@@ -40,31 +43,47 @@ function ali(option, query) {
 }
 
 ali.prototype = {
-    createClient: function (callback) {
+    createClient: function (page,callback) {
         var that = this;
-        var req = http.request(that.option, function (res) {
-            console.log(that.option)
+//        var req = http.request(that.option, function (res) {
+//            console.log(that.query)
+//
+//            console.log(req)
+//
+//            res.setEncoding("utf8");
+//            var html = "";
+//            res.on("data", function (data) {
+//                html += data;
+//            });
+//            res.on("end", function (data) {
+//                that.data = data;
+//
+//
+//                that.insertDB(JSON.parse(html));
+//                callback(html);
+//            })
+//
+//        });
+//
+//        req.write(JSON.stringify(that.query));
+//        req.end();
 
-            res.setEncoding("utf8");
-            var html = "";
-            res.on("data", function (data) {
-                html += data;
-            });
-            res.on("end", function (data) {
-                that.data = data;
-
-                callback(html);
-            })
-
+        request('http://job.alibaba.com/zhaopin/socialPositionList/doList.json?pageSize=4000&pageIndex='+page, function (error, res, body) {
+            that.insertDB(JSON.parse(body));
         });
+       // http://job.alibaba.com/zhaopin/socialPositionList/doList.json?pageSize=4000&pageIndex=1
+    },
 
-        req.write(JSON.stringify(that.query));
-        req.end();
+    insertDB:function(res){
+        var that = this;
+
+        console.log(res.returnValue.datas.length)
+
+        db.insert(res.returnValue.datas);
     },
 
     getList: function (data) {
         console.log(data)
-
     }
 }
 
