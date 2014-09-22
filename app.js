@@ -18,7 +18,9 @@ var server = http.createServer(function (req, res) {
     if (staticpath) {
         //静态资源请求
         util.findStatic(staticpath,function(data){
-            res.writeHead(200, {"Content-Type": "text/html"});
+
+
+            res.writeHead(200, {"Content-Type": "text/"+getBack(staticpath)});
             console.log(data);
             res.end(data);
         });
@@ -30,6 +32,12 @@ var server = http.createServer(function (req, res) {
                 res.end(util.makeJSONP(JSONP, resdata))
             });
         }
+    }
+
+
+    function getBack(path){
+        var temp = path.split(".").pop();
+        return temp;
     }
 
 });
