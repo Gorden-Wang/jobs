@@ -20,7 +20,7 @@ var server = http.createServer(function (req, res) {
         util.findStatic(staticpath,function(data){
 
 
-            res.writeHead(200, {"Content-Type": "text/"+getBack(staticpath)});
+            res.writeHead(200, {"Content-Type": getBack(staticpath)});
             console.log(data);
             res.end(data);
         });
