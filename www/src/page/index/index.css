@@ -1,0 +1,157 @@
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+@import url(http://fonts.googleapis.com/css?family=Cabin+Sketch);
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+html {
+  width: 100%; }
+
+body {
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black; }
+  body #page {
+    width: 100%;
+    background-color: black;
+    height: 100%; }
+    body #page #content {
+      padding: 10px 30px;
+      margin-top: 20px; }
+      body #page #content p {
+        display: block;
+        padding-top: 9.72222%;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        vertical-align: bottom;
+        font-family: "Cabin Sketch", sans-serif; }
+  body .header {
+    color: white;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+    font-family: "Cabin Sketch",sans-serif; }
+    body .header p {
+      padding: 20px 0px; }
+  body .top10wrapper {
+    position: relative;
+    width: 58.06452%;
+    padding-bottom: 67.74194%;
+    height: 0px;
+    float: left; }
+    body .top10wrapper p {
+      color: #161dff; }
+  body .top10 {
+    background-color: #161dff;
+    width: 100%;
+    padding-bottom: 95.83333%;
+    -webkit-border-radius: 100%;
+    position: absolute;
+    bottom: 0px;
+    height: 0px; }
+  body .huntwrapper {
+    position: relative;
+    left: 10%;
+    width: 37.09677%;
+    padding-bottom: 45.96774%;
+    height: 0px;
+    float: left; }
+    body .huntwrapper p {
+      color: #e67d12; }
+  body .hunt {
+    position: absolute;
+    bottom: 0px;
+    -webkit-border-radius: 100%;
+    width: 100%;
+    padding-bottom: 94.73684%;
+    background-color: #e67d12; }
+  body .donatewrpper {
+    position: relative;
+    left: 4%;
+    width: 25.80645%;
+    padding-bottom: 33.87097%;
+    height: 0px;
+    margin-top: 3%;
+    float: left; }
+    body .donatewrpper p {
+      color: #008bc6; }
+  body .donate {
+    position: absolute;
+    bottom: 0px;
+    -webkit-border-radius: 100%;
+    width: 100%;
+    padding-bottom: 95.2381%;
+    background-color: #008bc6; }
+  body .footer {
+    position: absolute;
+    bottom: 0px;
+    padding-left: 40px; }
+    body .footer .container {
+      background-image: url(bottom.png);
+      width: 38px;
+      height: 130px;
+      background-size: contain; }
