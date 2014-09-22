@@ -37,7 +37,25 @@ var server = http.createServer(function (req, res) {
 
     function getBack(path){
         var temp = path.split(".").pop();
-        return temp;
+
+        var res = "";
+        switch (temp){
+            case 'css' :
+                res = 'text/css';
+                break;
+            case 'js' :
+                res = 'application/x-javascript';
+                break;
+            case 'png' :
+                res = 'image/png';
+                break;
+            case 'jpeg':
+                res = 'image/jpeg';
+                break;
+
+        }
+
+        return res;
     }
 
 });
