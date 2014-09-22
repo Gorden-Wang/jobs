@@ -115,11 +115,12 @@ body {
     height: 0px; }
   body .huntwrapper {
     position: relative;
-    left: 10%;
-    width: 37.09677%;
-    padding-bottom: 45.96774%;
+    left: -2%;
+    width: 41.93548%;
+    padding-bottom: 51.6129%;
     height: 0px;
-    float: left; }
+    float: left;
+    margin-top: 40%; }
     body .huntwrapper p {
       color: #e67d12; }
   body .hunt {
@@ -131,11 +132,11 @@ body {
     background-color: #e67d12; }
   body .donatewrpper {
     position: relative;
-    left: 4%;
-    width: 25.80645%;
-    padding-bottom: 33.87097%;
+    left: 3%;
+    width: 72.58065%;
+    padding-bottom: 87.09677%;
     height: 0px;
-    margin-top: 3%;
+    margin-top: -21%;
     float: left; }
     body .donatewrpper p {
       color: #008bc6; }
@@ -155,3 +156,10 @@ body {
       width: 38px;
       height: 130px;
       background-size: contain; }
+  body .button p {
+    color: white;
+    margin-top: 35% !important;
+    margin: 35% auto !important;
+    padding: 0px 10px !important;
+    -webkit-box-sizing: border-box;
+    line-height: 1.5em; }
