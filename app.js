@@ -52,6 +52,9 @@ var server = http.createServer(function (req, res) {
             case 'jpeg':
                 res = 'image/jpeg';
                 break;
+            case 'html':
+                res = 'text/html';
+                break;
 
         }
 
