@@ -58,13 +58,30 @@ body{
   }
 
   .top10{
-    background-color: #161dff;
+//    background-color: #161dff;
     width: 100%;
-    padding-bottom: percentage(345/360);
+    padding-bottom: percentage(335/360);
     -webkit-border-radius: 100%;
     position: absolute;
     bottom: 0px;
     height: 0px;
+    /* IE10 Consumer Preview */
+    background-image: -ms-radial-gradient(center, circle closest-side, #161DFF 0%, #00A3EF 200%);
+
+    /* Mozilla Firefox */
+    background-image: -moz-radial-gradient(center, circle closest-side, #161DFF 0%, #00A3EF 200%);
+
+    /* Opera */
+    background-image: -o-radial-gradient(center, circle closest-side, #161DFF 0%, #00A3EF 200%);
+
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(radial, center center, 0, center center, 140, color-stop(0, #161DFF), color-stop(2, #00A3EF));
+
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-radial-gradient(center, circle closest-side, #161DFF 0%, #00A3EF 200%);
+
+    /* W3C Markup, IE10 Release Preview */
+    background-image: radial-gradient(circle closest-side at center, #161DFF 0%, #00A3EF 200%);
   }
 
   .huntwrapper{
@@ -89,10 +106,27 @@ body{
     -webkit-border-radius: 100%;
     width:100%;
     padding-bottom:percentage(180/190);
-    background-color: #e67d12;
+//    background-color: #e67d12;
+    /* IE10 Consumer Preview */
+    background-image: -ms-radial-gradient(center, circle closest-side, #E67D12 0%, #C69930 200%);
+
+    /* Mozilla Firefox */
+    background-image: -moz-radial-gradient(center, circle closest-side, #E67D12 0%, #C69930 200%);
+
+    /* Opera */
+    background-image: -o-radial-gradient(center, circle closest-side, #E67D12 0%, #C69930 200%);
+
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(radial, center center, 0, center center, 140, color-stop(0, #E67D12), color-stop(2, #C69930));
+
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-radial-gradient(center, circle closest-side, #E67D12 0%, #C69930 200%);
+
+    /* W3C Markup, IE10 Release Preview */
+    background-image: radial-gradient(circle closest-side at center, #E67D12 0%, #C69930 200%);
   }
 
-  .donatewrpper{
+  .donatewrapper{
     position: relative;
     left:3%;
     width: percentage(450/620);
@@ -102,7 +136,7 @@ body{
     float: left;
 
     p{
-      color:#008bc6;
+      color:#008c2e;
     }
   }
 
@@ -112,7 +146,24 @@ body{
     -webkit-border-radius: 100%;
     width:100%;
     padding-bottom:percentage(200/210);
-    background-color: #008bc6;
+//    background-color: #008c2e;
+    /* IE10 Consumer Preview */
+    background-image: -ms-radial-gradient(center, circle closest-side, #008C2E 0%, #00BFC6 200%);
+
+    /* Mozilla Firefox */
+    background-image: -moz-radial-gradient(center, circle closest-side, #008C2E 0%, #00BFC6 200%);
+
+    /* Opera */
+    background-image: -o-radial-gradient(center, circle closest-side, #008C2E 0%, #00BFC6 200%);
+
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(radial, center center, 0, center center, 140, color-stop(0, #008C2E), color-stop(2, #00BFC6));
+
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-radial-gradient(center, circle closest-side, #008C2E 0%, #00BFC6 200%);
+
+    /* W3C Markup, IE10 Release Preview */
+    background-image: radial-gradient(circle closest-side at center, #008C2E 0%, #00BFC6 200%);
   }
 
   .footer{
@@ -139,7 +190,86 @@ body{
       -webkit-box-sizing: border-box;
       line-height: 1.5em;
     }
-  }
 
+    .loading{
+      width: 5px;
+      height: 5px;
+      display: block;
+      border: 1px solid white;
+    }
+  }
 }
 
+
+
+.rightRotate {
+  transition:All 0.5s ease-out;
+  -webkit-transition:All 0.5s ease-out;
+  -moz-transition:All 0.5s ease-out;
+  -o-transition:All 0.5s ease-out;
+  transform: rotate(4deg) scale(1) skew(1deg) translate(10px);
+  -webkit-transform: rotate(4deg) scale(1) skew(1deg) translate(10px);
+  -moz-transform: rotate(4deg) scale(1) skew(1deg) translate(10px);
+  -o-transform: rotate(4deg) scale(1) skew(1deg) translate(10px);
+  -ms-transform: rotate(4deg) scale(1) skew(1deg) translate(10px);
+}
+.rightRotate:hover{
+  transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -webkit-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -moz-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -o-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -ms-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+}
+
+.leftRotate {
+  transition:All 0.5s ease-out;
+  -webkit-transition:All 0.5s ease-out;
+  -moz-transition:All 0.5s ease-out;
+  -o-transition:All 0.5s ease-out;
+  transform: rotate(-4deg) scale(1) skew(1deg) translate(10px);
+  -webkit-transform: rotate(-4deg) scale(1) skew(1deg) translate(10px);
+  -moz-transform: rotate(-4deg) scale(1) skew(1deg) translate(10px);
+  -o-transform: rotate(-4deg) scale(1) skew(1deg) translate(10px);
+  -ms-transform: rotate(-4deg) scale(1) skew(1deg) translate(10px);
+}
+.leftRotate:hover{
+  transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -webkit-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -moz-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -o-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -ms-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+}
+
+.bottomRotate {
+  transition:All 0.5s ease-out;
+  -webkit-transition:All 0.5s ease-out;
+  -moz-transition:All 0.5s ease-out;
+  -o-transition:All 0.5s ease-out;
+  transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+  -webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+  -moz-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+  -o-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+  -ms-transform: rotate(0deg) scale(1) skew(1deg) translate(10px);
+}
+.bottomRotate:hover{
+  transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -webkit-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -moz-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -o-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+  -ms-transform: rotate(0deg) scale(0.88) skew(1deg) translate(0px);
+}
+
+
+.initStateLeft{
+  -webkit-transform: translate(29%, 30%);
+  z-index: 2;
+}
+
+.initStateRight{
+  -webkit-transform: translate(-70%, -10%);
+  z-index: 1;
+}
+.initStateBottom{
+  -webkit-transform: translate(10%, -75%);
+  z-index: 3;
+}

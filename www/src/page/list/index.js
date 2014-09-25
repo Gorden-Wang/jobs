@@ -19,15 +19,11 @@
         bindEvent: function () {
             var that = this;
 
-            that.dom.top10.on('click',function(){
-                window.location.href = '../list/index.html?from=last';
-            });
         },
         init: function () {
             var that = this;
             that.cacheDom();
             that.bindUi();
-            that.bindEvent();
         },
         bindUi:function(){
           var that = this;
