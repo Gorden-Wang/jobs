@@ -65,7 +65,7 @@
                     ]
                 }
             }
-            return {query: query, option: option};
+            return {type:"searchByKeyWord",query: query, option: option};
         },
         getRequestParam: function (param, uri) {
             var value;

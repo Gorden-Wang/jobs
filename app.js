@@ -28,7 +28,7 @@ var server = http.createServer(function (req, res) {
         //接口调用
         if (JSON.stringify(param) != "{}") {
             util.router(param, function (resdata) {
-                res.writeHead(200, {"Content-Type": "text/html"})
+                res.writeHead(200, {"Content-Type": "application/json"})
                 res.end(util.makeJSONP(JSONP, resdata))
             });
         }
