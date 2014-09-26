@@ -79,16 +79,53 @@ body {
     background-color: #000000;
     height: 100%; }
     body #page #content {
-      padding: 10px 30px;
-      margin-top: 20px; }
-      body #page #content p {
-        display: block;
-        padding-top: 9.72222%;
-        position: absolute;
-        text-align: center;
+      padding: 10px 0px;
+      color: white; }
+      body #page #content ul li:first-child {
+        border-top: 1px solid white; }
+      body #page #content ul li {
+        border-bottom: 1px solid white;
+        overflow: hidden;
+        display: -webkit-box;
+        padding-bottom: 10px; }
+      body #page #content ul .main {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        -webkit-box-flex: 1; }
+      body #page #content ul .right {
+        width: 35px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        font-size: 20px; }
+        body #page #content ul .right span {
+          position: relative;
+          top: 27px;
+          vertical-align: middle;
+          display: block;
+          text-align: right; }
+      body #page #content ul .titlewrapper {
+        font-size: 16px;
+        width: 100%; }
+      body #page #content ul .subwrapper {
         width: 100%;
-        vertical-align: bottom;
-        font-family: "Cabin Sketch", sans-serif; }
+        overflow: hidden; }
+        body #page #content ul .subwrapper p {
+          width: 50%;
+          float: left;
+          margin-top: 10px; }
+        body #page #content ul .subwrapper p:last-child {
+          text-align: right; }
+      body #page #content ul .title {
+        width: 100%;
+        font-size: 14px;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: break-all;
+        line-height: 1.3em; }
   body .header {
     color: white;
     font-size: 25px;

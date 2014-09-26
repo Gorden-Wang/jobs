@@ -17,17 +17,69 @@ body {
     background-color: #000000;
     height: 100%;
     #content {
-      padding: 10px 30px;
-      margin-top: 20px;
-      p {
-        display: block;
-        padding-top: percentage(35/360);
-        position: absolute;
-        text-align: center;
-        width: 100%;
-        vertical-align: bottom;
-        font-family: "Cabin Sketch", sans-serif;
+      padding: 10px 0px;
 
+      color:white;
+      ul{
+        li:first-child{
+          border-top:1px solid white;
+        }
+        li{
+          border-bottom:1px solid white;
+          overflow: hidden;
+          display: -webkit-box;
+          padding-bottom:10px;
+
+        }
+        .main{
+          padding-top:10px;
+          padding-left:10px;
+          padding-right:10px;
+          -webkit-box-flex: 1;
+
+        }
+        .right{
+          width:35px;
+          padding-bottom:10px;
+          padding-right:10px;
+          font-size:20px;
+          span{
+            position: relative;
+            top: 27px;
+            vertical-align: middle;
+            display: block;
+            text-align: right;
+          }
+        }
+        .titlewrapper{
+          font-size:16px;
+          width: 100%;
+        }
+        .subwrapper{
+          width:100%;
+          overflow: hidden;
+          p{
+            width:50%;
+            float:left;
+            margin-top:10px;
+          }
+          p:last-child{
+            text-align: right;
+          }
+
+
+        }
+        .title{
+          width: 100%;
+          font-size: 14px;
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          word-break: break-all;
+          line-height:1.3em;
+        }
       }
     }
   }
