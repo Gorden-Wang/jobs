@@ -26,7 +26,7 @@
         bindEvent: function () {
             var that = this;
 
-            that.dom.button.on('click',function(){
+            that.dom.button.on('click', function () {
                 that.data.page += 1;
 
                 that.fetchData();
@@ -46,7 +46,7 @@
         bindUi: function (data) {
             var that = this;
 
-            that.dom.tplwrapper.append(juicer(that.dom.tpl.html(),{data:data}));
+            that.dom.tplwrapper.append(juicer(that.dom.tpl.html(), {data: data}));
 
             that.dom.footer.show();
 
@@ -56,7 +56,7 @@
             $.ajax({
                 type: "POST",
                 data: "data={'type':'bd'}",
-                url: "http://batjobs.duapp.com/searchByKeyWord?callback=?&data=" + JSON.stringify(that.makeQueryObj('top10')),
+                url: "http://localhost:18080/findOneById?callback=?&data=" + JSON.stringify(that.makeQueryObj('top10')),
                 dataType: "jsonp",
                 jsonp: "callback",
                 success: function (data) {
@@ -64,28 +64,19 @@
                     console.log(data)
 
                 },
-                error:function(){
+                error: function () {
                     alert("服务器异常")
                 }
             })
         },
-        makeQueryObj: function (tag) {
+        makeQueryObj: function () {
             var that = this;
             var query = {};
             var option = {};
-            if (tag == 'top10') {
-                query = {
-
-                };
-                option = {
-                    limit: 10,
-                    skip: that.data.page || 0,
-                    sort: [
-                        ['gmtModified', 'desc']
-                    ]
-                }
-            }
-            return {type:"searchByKeyWord",query: query, option: option};
+            query = {
+                id:that.getRequestParam('id')
+            };
+            return {type: "findOneById", query: query, option: option};
         },
         getRequestParam: function (param, uri) {
             var value;
@@ -93,22 +84,22 @@
             value = uri.match(new RegExp('[\?\&]' + param + '=([^\&\#]*)([\&\#]?)', 'i'));
             return value ? decodeURIComponent(value[1]) : value;
         },
-        addJuicerHelper:function(){
-            juicer.register('checkTime', function(time){
+        addJuicerHelper: function () {
+            juicer.register('checkTime', function (time) {
                 var res;
-                if(time && !isNaN(Number(time))){
+                if (time && !isNaN(Number(time))) {
                     //毫秒时间
                     var date = new Date(time);
-                    res = date.getFullYear()+"-"+parseInt(parseInt(date.getMonth())+1)+"-"+date.getDate();
-                }else{
+                    res = date.getFullYear() + "-" + parseInt(parseInt(date.getMonth()) + 1) + "-" + date.getDate();
+                } else {
                     res = time;
                 }
                 return res;
             });
 
-            juicer.register('checkHc', function(hc){
+            juicer.register('checkHc', function (hc) {
 
-                var res = hc == 0 ? '若干' : hc ;
+                var res = hc == 0 ? '若干' : hc;
                 return res;
 
             });
