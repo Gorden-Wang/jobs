@@ -26,12 +26,15 @@
         },
         init: function () {
             var that = this;
+            that.addJuicerHelper();
             that.cacheDom();
             that.cacheData();
             that.fetchData();
         },
-        bindUi: function () {
+        bindUi: function (data) {
             var that = this;
+
+            that.dom.tplwrapper.append(juicer(that.dom.tpl.html(),{data:data}));
 
 
         },
@@ -44,8 +47,12 @@
                 dataType: "jsonp",
                 jsonp: "callback",
                 success: function (data) {
-                    console.log(data);
+                    that.bindUi(data);
+                    console.log(data)
 
+                },
+                error:function(){
+                    alert("服务器异常")
                 }
             })
         },
@@ -73,6 +80,26 @@
             value = uri.match(new RegExp('[\?\&]' + param + '=([^\&\#]*)([\&\#]?)', 'i'));
             return value ? decodeURIComponent(value[1]) : value;
         },
+        addJuicerHelper:function(){
+            juicer.register('checkTime', function(time){
+                var res;
+                if(time && !isNaN(Number(time))){
+                    //毫秒时间
+                    var date = new Date(time);
+                    res = date.getFullYear()+"-"+parseInt(parseInt(date.getMonth())+1)+"-"+date.getDate();
+                }else{
+                    res = time;
+                }
+                return res;
+            });
+
+            juicer.register('checkHc', function(hc){
+
+                var res = hc == 0 ? '若干' : hc ;
+                return res;
+
+            });
+        }
 
     }
     var index = new index();

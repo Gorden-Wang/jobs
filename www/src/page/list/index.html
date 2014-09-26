@@ -19,88 +19,29 @@
         <p>Job Hunter</p>
     </header>
     <div id="content">
-        <ul>
-            <li>
-                <div class="main">
-                    <div class="titlewrapper">
-                        <p class="title">adfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdf</p>
-                    </div>
-                    <div class="subwrapper">
-                        <p class="time">2001-01-01</p>
-                        <p class="hc">若干</p>
-                    </div>
-                </div>
-                <div class="right"> <span>></span> </div>
-            </li>
-            <li>
-                <div class="main">
-                    <div class="titlewrapper">
-                        <p class="title">adfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdf</p>
-                    </div>
-                    <div class="subwrapper">
-                        <p class="time">2001-01-01</p>
-                        <p class="hc">若干</p>
-                    </div>
-                </div>
-                <div class="right"> <span>></span> </div>
-            </li>
-            <li>
-                <div class="main">
-                    <div class="titlewrapper">
-                        <p class="title">adfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdf</p>
-                    </div>
-                    <div class="subwrapper">
-                        <p class="time">2001-01-01</p>
-                        <p class="hc">若干</p>
-                    </div>
-                </div>
-                <div class="right"> <span>></span> </div>
-            </li>
-            <li>
-                <div class="main">
-                    <div class="titlewrapper">
-                        <p class="title">adfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdf</p>
-                    </div>
-                    <div class="subwrapper">
-                        <p class="time">2001-01-01</p>
-                        <p class="hc">若干</p>
-                    </div>
-                </div>
-                <div class="right"> <span>></span> </div>
-            </li>
-            <li>
-                <div class="main">
-                    <div class="titlewrapper">
-                        <p class="title">adfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdf</p>
-                    </div>
-                    <div class="subwrapper">
-                        <p class="time">2001-01-01</p>
-                        <p class="hc">若干</p>
-                    </div>
-                </div>
-                <div class="right"> <span>></span> </div>
-            </li> <li>
-            <div class="main">
-                <div class="titlewrapper">
-                    <p class="title">adfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdfadfasdfasdfasdf</p>
-                </div>
-                <div class="subwrapper">
-                    <p class="time">2001-01-01</p>
-                    <p class="hc">若干</p>
-                </div>
-            </div>
-            <div class="right"> <span>></span> </div>
-        </li>
 
-        </ul>
 
     </div>
 
     <script id="tpl" type="text/template">
         <ul>
+            {@each data as item}
             <li>
-
+                <div class="main">
+                    <div class="titlewrapper">
+                        <p class="title">${item.name} <span>[${item.from}]</span></p>
+                    </div>
+                    <div class="subwrapper">
+                        <p class="time">${checkTime(item.gmtModified)}</p>
+                        <p class="hc">${checkHc(item.recruitNumber)}</p>
+                    </div>
+                </div>
+                <div class="right"> <span>></span> </div>
             </li>
+
+
+            {@/each}
+
         </ul>
 
     </script>
