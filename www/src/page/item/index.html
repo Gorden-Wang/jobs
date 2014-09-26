@@ -20,6 +20,57 @@
             <p>Job Hunter</p>
         </header>
         <div id="content">
+            <ul>
+                <li>
+                    <p class="label">职位名称</p>
+
+                    <p class="content">${name}</p>
+                </li>
+                <li>
+                    <p class="label">供职部门</p>
+
+                    <p class="content">${departmentName}</p>
+                </li>
+                <li class="clearBox">
+                    <div>
+                        <p class="label">发布时间</p>
+
+                        <p class="content">${checkTime(gmtModified)}</p>
+                    </div>
+                    <div>
+                        <p class="label">招收人数</p>
+
+                        <p class="content">${checkHc(recruitNumber)}</p>
+                    </div>
+                </li>
+                <li class="clearBox">
+                    <div>
+                        <p class="label">工作地点</p>
+
+                        <p class="content">${workLocation}</p>
+                    </div>
+                    <div>
+                        <p class="label">工作性质</p>
+
+                        <p class="content">${workNature}</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="label">职位要求</p>
+
+                    <p class="content">
+                        {@each checkDescription(requirement) as item}
+
+                    <span>
+                        ${item}
+                    </span>
+                    {@/each}
+
+                    </p>
+
+
+                </li>
+            </ul>
 
 
         </div>

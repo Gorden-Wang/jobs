@@ -86,44 +86,22 @@ body {
         border-bottom: 1px solid white;
         overflow: hidden;
         display: -webkit-box;
-        padding-bottom: 10px; }
-      body #page #content ul .main {
-        padding-top: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        -webkit-box-flex: 1; }
-      body #page #content ul .right {
-        width: 35px;
-        padding-bottom: 10px;
-        padding-right: 10px;
-        font-size: 20px; }
-        body #page #content ul .right span {
-          position: relative;
-          top: 27px;
-          vertical-align: middle;
+        padding: 10px; }
+        body #page #content ul li div {
+          display: -webkit-box; }
+        body #page #content ul li div:first-child {
+          padding-bottom: 5px; }
+        body #page #content ul li p > span {
           display: block;
-          text-align: right; }
-      body #page #content ul .titlewrapper {
-        font-size: 16px;
-        width: 100%; }
-      body #page #content ul .subwrapper {
-        width: 100%;
-        overflow: hidden; }
-        body #page #content ul .subwrapper p {
-          width: 50%;
-          float: left;
-          margin-top: 10px; }
-        body #page #content ul .subwrapper p:last-child {
-          text-align: right; }
-      body #page #content ul .title {
-        width: 100%;
-        font-size: 14px;
-        overflow: hidden;
-        -webkit-line-clamp: 2;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        word-break: break-all;
+          line-height: 1.3em;
+          border-bottom: 1px dotted white;
+          padding: 5px; }
+        body #page #content ul li p > span:last-child {
+          border: 0px; }
+      body #page #content .label {
+        width: 75px; }
+      body #page #content .content {
+        -webkit-box-flex: 1;
         line-height: 1.3em; }
     body #page footer {
       padding: 10px;
@@ -136,6 +114,8 @@ body {
         font-size: 18px;
         line-height: 18px;
         padding: 10px; }
+  body .clearBox {
+    display: block !important; }
   body .header {
     color: white;
     font-size: 25px;

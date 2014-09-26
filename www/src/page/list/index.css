@@ -73,6 +73,11 @@ body {
   position: absolute;
   width: 100%;
   background-color: black; }
+  body a {
+    display: -webkit-box;
+    color: white;
+    text-decoration: none;
+    width: 100%; }
   body #page {
     width: 100%;
     background-color: #000000;

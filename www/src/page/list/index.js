@@ -32,8 +32,6 @@
                 that.fetchData();
 
             });
-
-
         },
         init: function () {
             var that = this;

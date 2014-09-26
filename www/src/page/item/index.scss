@@ -27,58 +27,33 @@ body {
           border-bottom:1px solid white;
           overflow: hidden;
           display: -webkit-box;
-          padding-bottom:10px;
+          padding:10px;
 
-        }
-        .main{
-          padding-top:10px;
-          padding-left:10px;
-          padding-right:10px;
-          -webkit-box-flex: 1;
-
-        }
-        .right{
-          width:35px;
-          padding-bottom:10px;
-          padding-right:10px;
-          font-size:20px;
-          span{
-            position: relative;
-            top: 27px;
-            vertical-align: middle;
-            display: block;
-            text-align: right;
+          div{
+            display: -webkit-box;
           }
-        }
-        .titlewrapper{
-          font-size:16px;
-          width: 100%;
-        }
-        .subwrapper{
-          width:100%;
-          overflow: hidden;
-          p{
-            width:50%;
-            float:left;
-            margin-top:10px;
+          div:first-child{
+            padding-bottom:5px;
           }
-          p:last-child{
-            text-align: right;
+          p>span{
+            display:block;
+            line-height:1.3em;
+            border-bottom:1px dotted white;
+            padding:5px;
           }
 
+          p>span:last-child{
+            border:0px;
+          }
+        }
+      }
+      .label{
+        width: 75px;
 
-        }
-        .title{
-          width: 100%;
-          font-size: 14px;
-          overflow: hidden;
-          -webkit-line-clamp: 2;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          word-break: break-all;
-          line-height:1.3em;
-        }
+      }
+      .content{
+        -webkit-box-flex:1;
+        line-height:1.3em;
       }
     }
 
@@ -97,6 +72,10 @@ body {
 
       }
     }
+  }
+
+  .clearBox{
+    display:block !important;
   }
 
   .header {
