@@ -99,10 +99,11 @@
         },
         fetchData: function (tag) {
             var that = this;
+            var searchApi = tag=='search'?'findAnyWay':'searchByKeyWord';
             $.ajax({
                 type: "POST",
                 data: "data={'type':'bd'}",
-                url: "http://batjobs.duapp.com/searchByKeyWord?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10')),
+                url: "http://batjobs.duapp.com/"+searchApi+"?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10')),
                 dataType: "jsonp",
                 jsonp: "callback",
                 success: function (data) {
@@ -119,13 +120,14 @@
             var that = this;
             var query = that.data.query || {};
             var option = that.data.option || {};
+            var searchApi = tag=='search'?'findAnyWay':'searchByKeyWord';
             if (tag == 'top10') {
 
             } else if (tag == 'search') {
                 query = that.data.query;
 
             }
-            return {type: "searchByKeyWord", query: query, option: option};
+            return {type: searchApi, query: query, option: option};
         },
         getRequestParam: function (param, uri) {
             var value;
