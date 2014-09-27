@@ -22,6 +22,10 @@
             that.dom.top10.on('click',function(){
                 window.location.href = '../list/index.html?from=last';
             });
+
+            that.dom.hunt.on('click',function(){
+                window.location.href = '../list/index.html?from=search';
+            });
         },
         init: function () {
             var that = this;

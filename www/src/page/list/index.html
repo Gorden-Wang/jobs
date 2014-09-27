@@ -17,6 +17,16 @@
 <div id="page">
     <header class="header">
         <p>Job Hunter</p>
+
+        <div class="searchwrapper">
+            <div>
+                <input type="text" placeholder="关键字以空格分开">
+            </div>
+            <div>
+                <button>查询</button>
+            </div>
+        </div>
+
     </header>
     <div id="content">
 
@@ -36,8 +46,8 @@
                         <p class="title">${item.name} <span>[${item.from}]</span></p>
                     </div>
                     <div class="subwrapper">
-                        <p class="time">${checkTime(item.gmtModified)}</p>
-                        <p class="hc">${checkHc(item.recruitNumber)}</p>
+                        <p class="time" style="width:60%">发布时间:${checkTime(item.gmtModified)}</p>
+                        <p class="hc" style="width:40%">招聘人数:${checkHc(item.recruitNumber)}</p>
                     </div>
                 </div>
                 <div class="right"> <span>></span> </div>
