@@ -48,21 +48,23 @@
                 var keyWords = that.dom.keyWordsInput.val();
 
 
-                var arr = keyWords.split(" ");
-                var res = "";
-                for (var i = 0; i < arr.length; i++) {
-                    res = res + "(" + arr[i] + ")" + "|";
-                }
+//                var arr = keyWords.split(" ");
+//                var res = "";
+//                for (var i = 0; i < arr.length; i++) {
+//                    res = res + "(" + arr[i] + ")" + "|";
+//                }
+//
+//
+//                var reg = new RegExp(res.replace(/\|$/, ''), "ig");
+//                reg = /ali html5/ig;
+//                that.data.query.$or = [
+//                    {workLocation: '/ali html5/'},
+//                    {requirement: '/ali html5/'},
+//                    {description: '/ali html5/'},
+//                    {name: reg}
+//                ];
 
-
-                var reg = new RegExp(res.replace(/\|$/, ''), "ig");
-                reg = /ali html5/ig;
-                that.data.query.$or = [
-                    {workLocation: '/ali html5/'},
-                    {requirement: '/ali html5/'},
-                    {description: '/ali html5/'},
-                    {name: reg}
-                ];
+                that.data.query.keyWord = keyWords;
 
                 console.log(that.data.query)
                 that.fetchData('search');
