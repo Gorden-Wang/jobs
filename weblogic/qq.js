@@ -86,15 +86,13 @@ qq.prototype = {
 
         function temp() {
             console.log(listArr);
-            d.insert(listArr,upfun);
+            d.insert(listArr);
 
-            var upfun = function(){
-                for(var i =0;i<listArr.length;i++){
 
-                    that.findDetail(listArr[i].url);
-                }
+            for(var i =0;i<listArr.length;i++){
+
+                that.findDetail(listArr[i].url);
             }
-
 
 
         };
