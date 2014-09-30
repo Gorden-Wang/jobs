@@ -5,11 +5,10 @@
 
 var http = require("http");
 var $ = require("node-jquery");
-var db = require("../lib/qqdb");
 var util = require("../lib/util");
 var request = require("request");
 util = new util();
-var d = new db();
+//var d = new db();
 
 function qq(page) {
 
@@ -25,14 +24,13 @@ qq.prototype = {
         that.data = [];
         request("http://hr.tencent.com/position.php?lid=&tid=&start=" + page * 10 || that.page * 10, function (error, res, body) {
             //that.findDetial(body, util.getRequestParam('postIdEnc', url));
-            that.findDom(body, callback);
+            that.findDom1(body, callback);
 
 
         });
     },
 
-
-    findDom: function (data, callback) {
+    findDom1: function (data, callback) {
         var that = this;
 
         var tr = $(data).find(".tablelist").find('tr');
@@ -83,64 +81,50 @@ qq.prototype = {
             }
         });
 
+        callback(listArr);
 
-        function temp() {
-            console.log(listArr);
-            d.insert(listArr);
-
-
-            for(var i =0;i<listArr.length;i++){
-
-                that.findDetail(listArr[i].url);
-            }
-
-
-        };
-
-        that.data.push(temp);
     },
 
-    findDetail:function(url){
-      var that = this;
-        request("http://hr.tencent.com/"+url, function (error, res, body) {
-            var update = that.findDetailDom(body, util.getRequestParam('id',url));
-            update();
+    getDetail: function (data, callback) {
+        var that = this;
+
+        request("http://hr.tencent.com/" + data.url, function (error, res, body) {
+            temp.apply(this, []);
+            that.findDetailDom1(body, this.data, callback);
         });
+
+        var temp = function () {
+            this.data = data;
+        }
     },
-    findDetailDom:function(data,id){
+    findDetailDom1: function (data, ordata, callback) {
         var that = this;
         var table = $(data).find(".tablelist ul");
-        var temp = {id:id};
-        $(table).each(function(i,v){
+        var temp = {id: ordata.id};
+        $(table).each(function (i, v) {
             var tempStr = "";
-            $(v).find('li').each(function(j,k){
-                tempStr += $(k).html() +"\n";
+            $(v).find('li').each(function (j, k) {
+                tempStr += $(k).html() + "\n";
             });
-            if(i==0){
+            if (i == 0) {
                 temp.description = tempStr;
             }
-            if(i == 1){
+            if (i == 1) {
                 temp.requirement = tempStr;
             }
         });
 
-        function update(){
-            d._update(id,temp);
-        }
-
-        return update;
+        callback(temp);
     },
-
-    getList: function () {
+    findDetail1: function (url, detailCallback) {
         var that = this;
-        for (var i = 0; i < 200; i++) {
-            (that.createClient(i));
-        }
+        request("http://hr.tencent.com/" + url, function (error, res, body) {
 
-
+        });
     }
-}
 
+}
+console.log(qq);
 
 module.exports = qq;
 

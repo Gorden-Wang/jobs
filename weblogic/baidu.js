@@ -69,7 +69,7 @@ baidu.prototype = {
             });
             res.on("end", function (data) {
                 var result = that.findDom(html);
-                that.insertList(result);
+                //that.insertList(result);
 
                 console.log("==========================")
 
@@ -129,14 +129,8 @@ baidu.prototype = {
         //console.log(resData);
 
 
-        return resData;
+        return tempArr;
 
-    },
-
-    insertList: function (data) {
-        d.insert(data.joblist, this.hackBaiduDetail(data));
-
-        //this.hackBaiduDetail(data);
     },
 
     hackBaiduDetail: function (data) {
@@ -144,14 +138,13 @@ baidu.prototype = {
         var arr = data.joblist;
         if (arr) {
             for (var i = 0; i < arr.length; i++) {
-
                 that.createDetailR(arr[i].href);
             }
 
 
         }
     },
-    createDetailR: function (url) {
+    createDetailR: function (url,callback) {
         var that = this;
 
         request("http://" + that.clientParam.host + url, function (error, res, body) {
@@ -192,6 +185,53 @@ baidu.prototype = {
         jobinfo.from = 'baidu';
 
         jobinfo && d._update(id, jobinfo);
+    },
+
+    findDetial1: function (html, data,callback) {
+        var that = this;
+
+
+        var job = {};
+        var jobinfo = {};
+        var html = $(html);
+        var job = $(html).find("body .hrs_jobInfo dd");
+        $(job).each(function (i, v) {
+
+            if (i == 0) {
+                jobinfo.departmentName = util.trim($(v).html().trim());
+            }
+            if (i == 1) {
+                jobinfo.workLocation = util.trim($(v).find("font").html().trim());
+            }
+            if (i == 2) {
+                jobinfo.recruitNumber = util.trim($(v).html().trim());
+            }
+            if (i == 3) {
+                jobinfo.firstCategory = util.trim($(v).find("font").html().trim());
+            }
+        });
+
+        jobinfo.description = $(html).find(".hrs_jobDuty div").html().trim().replace(/\r\n/,'<br/>').replace(/\n/,'<br/>').replace(/\r/,'<br/>');
+
+        jobinfo.requirement = $(html).find(".hrs_jobRequire div").html().trim().replace(/\r[\n]/,'<br/>').replace(/\n/,'<br/>');
+
+        jobinfo.from = 'baidu';
+
+        callback(jobinfo);
+
+    },
+
+    getDetail: function (data, callback) {
+        var that = this;
+
+        request("http://" + that.clientParam.host + data.href, function (error, res, body) {
+            temp.call(this);
+            that.findDetial1(body.replace(/<br>/ig, '</br>'), this.data,callback);
+        });
+
+        var temp = function () {
+            this.data = data;
+        }
     }
 }
 

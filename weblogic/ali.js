@@ -45,31 +45,8 @@ function ali(page,size,query) {
 ali.prototype = {
     createClient: function (page,callback) {
         var that = this;
-//        var req = http.request(that.option, function (res) {
-//            console.log(that.query)
-//
-//            console.log(req)
-//
-//            res.setEncoding("utf8");
-//            var html = "";
-//            res.on("data", function (data) {
-//                html += data;
-//            });
-//            res.on("end", function (data) {
-//                that.data = data;
-//
-//
-//                that.insertDB(JSON.parse(html));
-//                callback(html);
-//            })
-//
-//        });
-//
-//        req.write(JSON.stringify(that.query));
-//        req.end();
-
         request('http://job.alibaba.com/zhaopin/socialPositionList/doList.json?pageSize=4000&pageIndex='+page, function (error, res, body) {
-            that.insertDB(JSON.parse(body));
+            callback(JSON.parse(body));
         });
        // http://job.alibaba.com/zhaopin/socialPositionList/doList.json?pageSize=4000&pageIndex=1
     },
