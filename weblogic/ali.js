@@ -46,7 +46,7 @@ ali.prototype = {
     createClient: function (page,callback) {
         var that = this;
         request('http://job.alibaba.com/zhaopin/socialPositionList/doList.json?pageSize=4000&pageIndex='+page, function (error, res, body) {
-            callback(JSON.parse(body));
+            callback(JSON.parse(body).returnValue.datas);
         });
        // http://job.alibaba.com/zhaopin/socialPositionList/doList.json?pageSize=4000&pageIndex=1
     },

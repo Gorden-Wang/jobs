@@ -3,7 +3,7 @@ var url = require("url");
 var qs = require("querystring");
 var util = require("./lib/util");
 var db = require("./lib/db");
-var sys = require('./lib/sys.js');
+var sys = require('./lib/sysBAT.js');
 var
 
 util = new util();
@@ -28,10 +28,15 @@ var server = http.createServer(function (req, res) {
     } else {
         //接口调用
         if (JSON.stringify(param) != "{}") {
+
+
+
             util.router(param, function (resdata) {
                 res.writeHead(200, {"Content-Type": "application/json"})
                 res.end(util.makeJSONP(JSONP, resdata))
             });
+
+
         }
     }
 
@@ -70,6 +75,6 @@ server.listen(18080, function () {
 
 var sysInstance = new sys();
 
-sysInstance.init();
+sysInstance.sys();
 
-console.log("server start")
+console.log("server start");
