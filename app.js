@@ -74,7 +74,12 @@ server.listen(18080, function () {
 });
 
 var sysInstance = new sys();
+//setInterval(function(){
+    sysInstance.sys();
+//},util.getIntervalTime(3));
 
-sysInstance.sys();
+
+
+
 
 console.log("server start");
