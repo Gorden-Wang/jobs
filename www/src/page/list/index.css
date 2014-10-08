@@ -150,9 +150,9 @@ body {
       padding: 20px 0px; }
     body .header .searchwrapper {
       display: -webkit-box;
-      padding: 0px 10px; }
-      body .header .searchwrapper display:none
-      div:first-child {
+      padding: 0px 10px;
+      display: none; }
+      body .header .searchwrapper div:first-child {
         -webkit-box-flex: 1;
         margin-right: 10px; }
       body .header .searchwrapper div:last-child {
