@@ -4,9 +4,7 @@ var qs = require("querystring");
 var util = require("./lib/util");
 var db = require("./lib/db");
 var sys = require('./lib/sysBAT.js');
-var
-
-util = new util();
+var util = new util();
 
 var server = http.createServer(function (req, res) {
     var path = util.getPath(req);
