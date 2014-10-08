@@ -103,7 +103,7 @@ baidu.prototype = {
                 temp = $(k).html();
                 if (j == 0) {
                     //title:
-                    job.title = util.trim($(k).find("a").html());
+                    job.name = util.trim($(k).find("a").html());
                     job.href = $(k).find("a").attr("href");
                     job.id = util.getRequestParam('postIdEnc', job.href);
 

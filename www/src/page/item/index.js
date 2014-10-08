@@ -21,6 +21,7 @@
             var that = this;
             that.data = {};
             that.data.from = that.getRequestParam('from');
+            that.data.jobId = that.getRequestParam('id');
             that.data.page = 0;
             that.data.rollback = 0;
         },
@@ -61,17 +62,7 @@
                 dataType: "jsonp",
                 jsonp: "callback",
                 success: function (data) {
-                    if(data == null &&  that.data.rollback <=1 ){
-                        that.fetchData();
-
-                    }else{
-                        that.bindUi(data);
-                    }
-
-
-
-                    console.log(data)
-
+                    that.bindUi(data);
                 },
                 error: function () {
                     alert("服务器异常")
@@ -82,10 +73,11 @@
             var that = this;
             var query = {};
             var option = {};
+            var id = that.data.from == 'ali' ? parseInt(that.data.jobId) : that.data.jobId;
             query = {
-                id:that.data.rollback==1?parseInt(that.getRequestParam('id')):that.getRequestParam('id')
+                id: id
             };
-            that.data.rollback++;
+            //that.data.rollback++;
             return {type: "findOneById", query: query, option: option};
         },
         getRequestParam: function (param, uri) {
@@ -116,14 +108,28 @@
 
             juicer.register('checkDescription', function (hc) {
 
-                var array=[];
-
-                if(hc.indexOf('<br/>')>-1){
+                var array = [];
+                hc = hc.replace(/<br>/ig,'<br/>');
+                hc = hc.replace(/\n/ig,'<br/>');
+                if (hc.indexOf('<br/>') > -1) {
                     array = hc.split("<br/>");
                 }
                 return array;
 
             });
+
+            juicer.register('checkItem', function (item) {
+
+                var item = item.trim();
+                if(item){
+                    return true;
+                }else{
+                    return false;
+                }
+
+            });
+
+
 
 
         }

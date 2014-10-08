@@ -60,11 +60,12 @@
 
                     <p class="content">
                         {@each checkDescription(requirement) as item}
-
-                    <span>
-                        ${item}
-                    </span>
-                    {@/each}
+                            {@if checkItem(item)}
+                                <span>
+                                    ${item}
+                                </span>
+                            {@/if}
+                        {@/each}
 
                     </p>
 
