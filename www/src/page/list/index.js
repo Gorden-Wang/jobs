@@ -15,6 +15,7 @@
             that.dom.tpl = $("#tpl");
             that.dom.footer = $("footer");
             that.dom.button = $("#findMore");
+            that.dom.searchWrapper = $(".searchwrapper");
             that.dom.search = $(".searchwrapper button");
             that.dom.keyWordsInput = $(".searchwrapper input");
 
@@ -65,6 +66,7 @@
         initSearch: function () {
             var that = this;
             that.bindEvent();
+            that.dom.searchWrapper.show();
         },
         init: function () {
             var that = this;
