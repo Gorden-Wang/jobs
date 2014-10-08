@@ -203,22 +203,22 @@ baidu.prototype = {
         $(job).each(function (i, v) {
 
             if (i == 0) {
-                jobinfo.departmentName = util.trim($(v).html().trim());
+                jobinfo.departmentName = util.trim($(v).html());
             }
             if (i == 1) {
-                jobinfo.workLocation = util.trim($(v).find("font").html().trim());
+                jobinfo.workLocation = util.trim($(v).find("font").html());
             }
             if (i == 2) {
-                jobinfo.recruitNumber = util.trim($(v).html().trim());
+                jobinfo.recruitNumber = util.trim($(v).html());
             }
             if (i == 3) {
-                jobinfo.firstCategory = util.trim($(v).find("font").html().trim());
+                jobinfo.firstCategory = util.trim($(v).find("font").html());
             }
         });
 
-        jobinfo.description = $(html).find(".hrs_jobDuty div").html().trim().replace(/\r\n/,'<br/>').replace(/\n/,'<br/>').replace(/\r/,'<br/>');
+        jobinfo.description = $(html).find(".hrs_jobDuty div").html().replace(/\r\n/,'<br/>').replace(/\n/,'<br/>').replace(/\r/,'<br/>');
 
-        jobinfo.requirement = $(html).find(".hrs_jobRequire div").html().trim().replace(/\r[\n]/,'<br/>').replace(/\n/,'<br/>');
+        jobinfo.requirement = $(html).find(".hrs_jobRequire div").html().replace(/\r[\n]/,'<br/>').replace(/\n/,'<br/>');
 
         jobinfo.from = 'baidu';
 
