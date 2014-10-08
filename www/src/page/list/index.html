@@ -43,7 +43,7 @@
                 <a href="../item/index.html?id=${item.id}&from=${item.from}">
                 <div class="main">
                     <div class="titlewrapper">
-                        <p class="title">${item.name} <span>[${item.from}]</span></p>
+                        <p class="title">${hackItemName(item.name,item)} <span>[${item.from}]</span></p>
                     </div>
                     <div class="subwrapper">
                         <p class="time" style="width:60%">发布时间:${checkTime(item.gmtModified)}</p>

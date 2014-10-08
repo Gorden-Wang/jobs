@@ -143,6 +143,14 @@
                 return res;
 
             });
+
+            juicer.register('hackItemName', function (itemName,item) {
+
+                return itemName?itemName:item.title
+
+            });
+
+
         }
 
     }

@@ -129,6 +129,12 @@
 
             });
 
+            juicer.register('hackItemName', function (itemName,title) {
+
+                return itemName?itemName:title
+
+            });
+
 
 
 
