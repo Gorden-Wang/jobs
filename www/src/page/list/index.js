@@ -39,7 +39,7 @@
             var that = this;
 
             that.dom.button.on('click', function () {
-                that.data.page += 1;
+                that.data.option.page += 1;
                 that.fetchData();
 
             });
