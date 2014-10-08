@@ -20,7 +20,7 @@
             var that = this;
 
             that.dom.top10.on('click',function(){
-                window.location.href = '../list/index.html?from=last';
+                window.location.href = '../list/index.html?from=top10';
             });
 
             that.dom.hunt.on('click',function(){
