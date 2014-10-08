@@ -59,7 +59,7 @@ function baidu(page, rowSize, location, keyword, query) {
 }
 
 baidu.prototype = {
-    createClient: function (callback) {
+    createClient: function (page,callback) {
         var that = this;
         var req = http.request(this.option, function (res) {
             res.setEncoding("utf8");
@@ -80,6 +80,7 @@ baidu.prototype = {
             })
 
         });
+        this.query["pc.currentPage"] = page;
 
         req.write(JSON.stringify(that.query));
 
