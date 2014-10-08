@@ -81,9 +81,10 @@ baidu.prototype = {
 //
 //
 //        req.end();
-
-
-        request("http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage="+page+"&pc.rowSize="+that.queryParam["pc.rowSize"]+"&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=", function (error, res, body) {
+        page = parseInt(page+1);
+        var str = "http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage="+page+"&pc.rowSize="+that.query["pc.rowSize"]+"&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=";
+        console.log(str);
+        request("http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage="+page+"&pc.rowSize="+that.query["pc.rowSize"]+"&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=", function (error, res, body) {
             var result = that.findDom(body&&body.replace(/\n/g, ""));
             //that.insertList(result);
             callback(result);
@@ -92,7 +93,7 @@ baidu.prototype = {
     },
 
     findDom: function (data) {
-        var data = data.replace(/\n/g, "");
+        var data = data && data.replace(/\n/g, "");
         var trs = $(data).find("body #hrs_joblistTable tbody tr");
         var resData = {}, tempArr = [];
         $.each(trs, function (i, v) {
