@@ -20,7 +20,7 @@ var server = http.createServer(function (req, res) {
 
 
             res.writeHead(200, {"Content-Type": getBack(staticpath)});
-            console.log(data);
+            util.console.log(data);
             res.end(data);
         });
     } else {
@@ -68,7 +68,7 @@ var server = http.createServer(function (req, res) {
 });
 
 server.listen(18080, function () {
-    console.log("listenning");
+    util.console.log("listenning");
 });
 
 var sysInstance = new sys();
@@ -80,4 +80,4 @@ var sysInstance = new sys();
 
 
 
-console.log("server start");
+util.console.log("server start");

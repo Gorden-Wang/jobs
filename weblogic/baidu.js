@@ -65,7 +65,7 @@ baidu.prototype = {
             res.setEncoding("utf8");
             var html = "";
             res.on("data", function (data) {
-                html += data.replace(/\n/g, "");
+                html += data && data.replace(/\n/g, "");
             });
             res.on("end", function (data) {
                 var result = that.findDom(html);
@@ -227,7 +227,7 @@ baidu.prototype = {
 
         request("http://" + that.clientParam.host + data.href, function (error, res, body) {
             temp.call(this);
-            that.findDetial1(body.replace(/<br>/ig, '</br>'), this.data,callback);
+            that.findDetial1(body && body.replace(/<br>/ig, '</br>'), this.data,callback);
         });
 
         var temp = function () {
