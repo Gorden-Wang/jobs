@@ -71,7 +71,7 @@ server.listen(18080, function () {
     util.console.log("listenning");
 });
 
-var sysInstance = new sys();
+var sysInstance = new sys(false);
 //setInterval(function(){
     sysInstance.sys();
 //},util.getIntervalTime(3));
