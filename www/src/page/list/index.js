@@ -53,7 +53,7 @@
             that.dom.search.on('click', function () {
                 var keyWords = that.dom.keyWordsInput.val();
                 that.data.query.keyWord = keyWords;
-
+                that.dom.tplwrapper.html("");
                 that.fetchData('search');
             });
         },
