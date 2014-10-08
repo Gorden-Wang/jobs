@@ -61,31 +61,34 @@ function baidu(page, rowSize, location, keyword, query) {
 baidu.prototype = {
     createClient: function (page,callback) {
         var that = this;
-        var req = http.request(this.option, function (res) {
-            res.setEncoding("utf8");
-            var html = "";
-            res.on("data", function (data) {
-                html += data && data.replace(/\n/g, "");
-            });
-            res.on("end", function (data) {
-                var result = that.findDom(html);
-                //that.insertList(result);
+//        var req = http.request(this.option, function (res) {
+//            res.setEncoding("utf8");
+//            var html = "";
+//            res.on("data", function (data) {
+//                html += data && data.replace(/\n/g, "");
+//            });
+//            res.on("end", function (data) {
+//                var result = that.findDom(html);
+//                //that.insertList(result);
+//                callback(result);
+//            })
+//
+//        });
+//        this.query["pc.currentPage"] = page;
+//
+//        req.write(JSON.stringify(that.query));
+//
+//
+//
+//        req.end();
 
-                console.log("==========================")
 
-                console.log(that.query['pc.currentPage']);
-
-                console.log("==========================")
-                callback(result);
-            })
-
+        request("http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage="+page+"&pc.rowSize="+that.queryParam["pc.rowSize"]+"&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=", function (error, res, body) {
+            var result = that.findDom(body&&body.replace(/\n/g, ""));
+            //that.insertList(result);
+            callback(result);
         });
-        this.query["pc.currentPage"] = page;
 
-        req.write(JSON.stringify(that.query));
-
-
-        req.end();
     },
 
     findDom: function (data) {
