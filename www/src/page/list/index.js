@@ -43,7 +43,7 @@
                 that.data.option.skip += 1;
                 if( that.data.from == "top10"){
                     that.fetchData();
-                }else if(that.data.from == "last"){
+                }else if(that.data.from == "search"){
                     that.fetchData('search');
                 }
 
@@ -66,7 +66,7 @@
         initSearch: function () {
             var that = this;
             that.bindEvent();
-            that.dom.searchWrapper.show();
+            that.dom.searchWrapper.css("display","-webkit-box");
         },
         init: function () {
             var that = this;
