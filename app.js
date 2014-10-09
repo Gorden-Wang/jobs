@@ -76,7 +76,7 @@ var server = http.createServer(function (req, res) {
 
 });
 
-server.listen(18080, function () {
+server.listen(80, function () {
     util.console.log("listenning");
 });
 
