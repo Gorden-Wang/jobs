@@ -136,6 +136,14 @@
             });
 
 
+            juicer.register('hackWorkNature', function (item) {
+
+                return item?item:"全职"
+
+            });
+
+
+
 
 
         }

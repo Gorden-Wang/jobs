@@ -26,11 +26,13 @@
 
                     <p class="content">${hackItemName(name,title)}</p>
                 </li>
+                {@if  departmentName }
                 <li>
                     <p class="label">供职部门</p>
 
                     <p class="content">${departmentName}</p>
                 </li>
+                {@/if}
                 <li class="clearBox">
                     <div>
                         <p class="label">发布时间</p>
@@ -52,8 +54,21 @@
                     <div>
                         <p class="label">工作性质</p>
 
-                        <p class="content">${workNature}</p>
+                        <p class="content">${hackWorkNature(workNature)}</p>
                     </div>
+                </li>
+                <li>
+                    <p>岗位描述</p>
+
+                    <p class="content">
+                        {@each checkDescription(description) as item}
+                        {@if checkItem(item)}
+                                <span>
+                                    ${item}
+                                </span>
+                        {@/if}
+                        {@/each}
+                    </p>
                 </li>
                 <li>
                     <p class="label">职位要求</p>

@@ -59,7 +59,7 @@ function baidu(page, rowSize, location, keyword, query) {
 }
 
 baidu.prototype = {
-    createClient: function (page,callback) {
+    createClient: function (page, callback) {
         var that = this;
 //        var req = http.request(this.option, function (res) {
 //            res.setEncoding("utf8");
@@ -81,11 +81,11 @@ baidu.prototype = {
 //
 //
 //        req.end();
-        page = parseInt(page+1);
-        var str = "http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage="+page+"&pc.rowSize="+that.query["pc.rowSize"]+"&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=";
+        page = parseInt(page + 1);
+        var str = "http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage=" + page + "&pc.rowSize=" + that.query["pc.rowSize"] + "&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=";
         console.log(str);
-        request("http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage="+page+"&pc.rowSize="+that.query["pc.rowSize"]+"&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=", function (error, res, body) {
-            var result = that.findDom(body&&body.replace(/\n/g, ""));
+        request("http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage=" + page + "&pc.rowSize=" + that.query["pc.rowSize"] + "&releaseTime=0&keyWord=&positionType=0&trademark=1&workPlaceCode=&positionName=&recruitType=2&brandCode=1&searchType=1&workPlaceNameV=&positionTypeV=0&keyWordV=", function (error, res, body) {
+            var result = that.findDom(body && body.replace(/\n/g, ""));
             //that.insertList(result);
             callback(result);
         });
@@ -149,7 +149,7 @@ baidu.prototype = {
 
         }
     },
-    createDetailR: function (url,callback) {
+    createDetailR: function (url, callback) {
         var that = this;
 
         request("http://" + that.clientParam.host + url, function (error, res, body) {
@@ -183,16 +183,16 @@ baidu.prototype = {
             }
         });
 
-        jobinfo.description = $(html).find(".hrs_jobDuty div").html().trim().replace(/\r\n/,'<br/>').replace(/\n/,'<br/>').replace(/\r/,'<br/>');
+        jobinfo.description = $(html).find(".hrs_jobDuty div").html().trim().replace(/\r\n/, '<br/>').replace(/\n/, '<br/>').replace(/\r/, '<br/>');
 
-        jobinfo.requirement = $(html).find(".hrs_jobRequire div").html().trim().replace(/\r[\n]/,'<br/>').replace(/\n/,'<br/>');
+        jobinfo.requirement = $(html).find(".hrs_jobRequire div").html().trim().replace(/\r[\n]/, '<br/>').replace(/\n/, '<br/>');
 
         jobinfo.from = 'baidu';
 
         jobinfo && d._update(id, jobinfo);
     },
 
-    findDetial1: function (html, data,callback) {
+    findDetial1: function (html, data, callback) {
         var that = this;
 
 
@@ -216,9 +216,9 @@ baidu.prototype = {
             }
         });
 
-        jobinfo.description = $(html).find(".hrs_jobDuty div").html().replace(/\r\n/,'<br/>').replace(/\n/,'<br/>').replace(/\r/,'<br/>');
+        jobinfo.description = $(html).find(".hrs_jobDuty div") && $(html).find(".hrs_jobDuty div").html().replace(/\r\n/, '<br/>').replace(/\n/, '<br/>').replace(/\r/, '<br/>');
 
-        jobinfo.requirement = $(html).find(".hrs_jobRequire div").html().replace(/\r[\n]/,'<br/>').replace(/\n/,'<br/>');
+        jobinfo.requirement = $(html).find(".hrs_jobRequire div") && $(html).find(".hrs_jobRequire div").html().replace(/\r[\n]/, '<br/>').replace(/\n/, '<br/>');
 
         jobinfo.from = 'baidu';
 
@@ -231,7 +231,7 @@ baidu.prototype = {
 
         request("http://" + that.clientParam.host + data.href, function (error, res, body) {
             temp.call(this);
-            that.findDetial1(body && body.replace(/<br>/ig, '</br>'), this.data,callback);
+            that.findDetial1(body && body.replace(/<br>/ig, '</br>'), this.data, callback);
         });
 
         var temp = function () {
