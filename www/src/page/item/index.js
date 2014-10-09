@@ -113,6 +113,8 @@
                 hc = hc.replace(/\n/ig,'<br/>');
                 if (hc.indexOf('<br/>') > -1) {
                     array = hc.split("<br/>");
+                }else{
+                    array.push(hc)
                 }
                 return array;
 
