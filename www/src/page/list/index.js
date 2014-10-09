@@ -40,7 +40,7 @@
             var that = this;
 
             that.dom.button.on('click', function () {
-                that.data.option.skip += 1;
+                that.data.option.skip = that.data.option.skip+10;
                 if( that.data.from == "top10"){
                     that.fetchData();
                 }else if(that.data.from == "search"){
