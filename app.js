@@ -5,6 +5,7 @@ var util = require("./lib/util");
 var db = require("./lib/db");
 var sys = require('./lib/sysBAT.js');
 var util = new util();
+var cache = {};
 
 var server = http.createServer(function (req, res) {
     var path = util.getPath(req);
@@ -16,13 +17,21 @@ var server = http.createServer(function (req, res) {
 
     if (staticpath) {
         //静态资源请求
-        util.findStatic(staticpath,function(data){
-
-
+        if(cache[staticpath]){
             res.writeHead(200, {"Content-Type": getBack(staticpath)});
-            util.console.log(data);
-            res.end(data);
-        });
+            res.end(cache[staticpath]);
+        }else{
+            util.findStatic(staticpath,function(data){
+
+
+                res.writeHead(200, {"Content-Type": getBack(staticpath)});
+                res.end(data);
+                cache[staticpath] = data;
+            });
+        }
+
+
+
     } else {
         //接口调用
         if (JSON.stringify(param) != "{}") {
