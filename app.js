@@ -12,16 +12,18 @@ var server = http.createServer(function (req, res) {
     var param = util.getParam(req);
     var JSONP = util.getJSONPName(req);
     var staticpath = path.match(/^\/www\/(.*)\?{0,1}.*/);
+    var isWeixin = path.match(/weixinroot/);
+    isWeixin && (isWeixin = isWeixin[1] );
 
     staticpath && (staticpath = staticpath[1]);
 
-    if (staticpath) {
+    if (staticpath && !isWeixin) {
         //静态资源请求
-        if(cache[staticpath]){
+        if (cache[staticpath]) {
             res.writeHead(200, {"Content-Type": getBack(staticpath)});
             res.end(cache[staticpath]);
-        }else{
-            util.findStatic(staticpath,function(data){
+        } else {
+            util.findStatic(staticpath, function (data) {
 
 
                 res.writeHead(200, {"Content-Type": getBack(staticpath)});
@@ -31,11 +33,27 @@ var server = http.createServer(function (req, res) {
         }
 
 
+    } else if (!staticpath && isWeixin) {
+
+        var Data = "";
+        req.on('data', function (data) {
+            Data += data.toString();
+        });
+
+        req.on("end",function(){
+            util.weixinRoot(Data,function(data){
+                res.writeHead(200, {"Content-Type": "text/xml"});
+                res.end(data);
+            })
+        });
+
+
+
+
 
     } else {
         //接口调用
         if (JSON.stringify(param) != "{}") {
-
 
 
             util.router(param, function (resdata) {
@@ -48,11 +66,11 @@ var server = http.createServer(function (req, res) {
     }
 
 
-    function getBack(path){
+    function getBack(path) {
         var temp = path.split(".").pop();
 
         var res = "";
-        switch (temp){
+        switch (temp) {
             case 'css' :
                 res = 'text/css';
                 break;
@@ -81,12 +99,9 @@ server.listen(18080, function () {
 });
 
 var sysInstance = new sys(false);
-setInterval(function(){
+setInterval(function () {
     sysInstance.sys();
-},util.getIntervalTime(3));
-
-
-
+}, util.getIntervalTime(3));
 
 
 util.console.log("server start");
