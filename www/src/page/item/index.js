@@ -39,11 +39,13 @@
         },
         init: function () {
             var that = this;
+
             that.addJuicerHelper();
             that.cacheDom();
             that.cacheData();
             that.bindEvent();
             that.fetchData();
+            that.shareWeixin();
         },
         bindUi: function (data) {
             var that = this;
@@ -143,11 +145,66 @@
                 return item?item:"全职"
 
             });
+        },
+        shareWeixin:function(){
+            var that = this;
+            if (typeof WeixinJSBridge === "undefined") {/*设置如何初始化分享*/
+                document.addEventListener('WeixinJSBridgeReady',function onBridgeReady(){
+                    do_weixin_share();
+                },false)
+            }
+            else{
+                do_weixin_share();
+            }
 
 
+            function do_weixin_share(){/*分享项*/
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){/*发送给好友*/
+                    share_weixin_friend();
+                });
+                WeixinJSBridge.on('menu:share:timeline', function(argv){/*分享到朋友圈*/
+                    share_weixin_timeLine();
+                });
+                WeixinJSBridge.on('menu:share:weibo', function(argv){/*分享到微博*/
+                    share_weixin_t();
+                });
+            }
+            function share_weixin_friend(){/*分享自定义*/
+                WeixinJSBridge.invoke('sendAppMessage',{
+                    "img_url" : _share_src,
+                    "img_width" : "120",
+                    "img_height" : "120",
+                    "link" : _link,
+                    "desc" : _desc.length ? _desc.html() : "嗨，这家微店太棒了，快去看看吧~",
+                    "title" : _title
+                });
+            }
+            function share_weixin_timeLine(){
+//                WeixinJSBridge.invoke('shareTimeline',{
+//                    "img_url" : _share_src,
+//                    "img_width" : "120",
+//                    "img_height" : "120",
+//                    "link" : _link,
+//                    "desc" : _desc.length ? _desc.html() : " 这家微店太棒了，快去看看吧~",
+//                    "title" : _title+ "，这家微店太棒了，快去看看吧~"
+//                });
+                alert("aaa");
+            }
+            function share_weixin_t(){
+                WeixinJSBridge.invoke('shareWeibo',{
+                    "img_url" : _share_src,
+                    "content" : _title +"，这家微店太棒了，快去看看吧~ " +_link,
+                    "url" : _link
+                });
+            }
 
-
-
+            $("#attention").on("click",function(){
+                alert("aaa");
+                WeixinJSBridge.invoke("addContact",{
+                    "username":"gh_dc1379554bb9",
+                    "webtype":"1"
+                })
+            })
         }
 
     }

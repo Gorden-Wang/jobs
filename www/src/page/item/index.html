@@ -18,9 +18,6 @@
     <script id="tpl" type="text/template">
         <header class="header" style="position: relative">
             <p>BAT职位猎手</p>
-            <span style="position: absolute;right: 20px;top: 20px;">
-                <a href="weixin://contacts/profile/gh_dc1379554bb9">关注</a>
-            </span>
         </header>
         <div id="content">
             <ul>
@@ -102,5 +99,15 @@
 <script src="../../lib/zepto.js"></script>
 <script src="../../lib/juicer.js"></script>
 <script src="index.js"></script>
+<script>
+    function test(){
+    //alert("aaa");
+        WeixinJSBridge.invoke("addContact",{
+            "username":"gh_dc1379554bb9",
+            "webtype":"1"
+        },function(d){
+            alert(JSON.stringify(d))
+        })}
+</script>
 </body>
 </html>
