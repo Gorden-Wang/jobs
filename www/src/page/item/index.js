@@ -23,6 +23,7 @@
             that.data = {};
             that.data.from = that.getRequestParam('from');
             that.data.jobId = that.getRequestParam('id');
+            that.data.isweixin = that.getRequestParam('weixin')
             that.data.page = 0;
             that.data.rollback = 0;
         },
@@ -50,7 +51,7 @@
         },
         bindUi: function (data) {
             var that = this;
-            if(that.data.from=="weixin"){
+            if(that.data.isweixin=="true"){
                 that.dom.tplwrapper.html(juicer(that.dom.tplweixin.html(), data));
             }else{
                 that.dom.tplwrapper.html(juicer(that.dom.tpl.html(), data));
