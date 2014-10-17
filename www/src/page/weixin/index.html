@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>BAT职位猎手</title>
+    <meta name="description" content="百度，阿里，腾讯招聘信息汇总，屌丝逆袭必经之路，提高薪资水平，提升技术实力，Job Hunter 祝你一臂之力！"/>
+    <meta name="keywords" content="BAT招聘信息 百度招聘 阿里巴巴招聘 腾讯招聘"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="false" name="twcClient" id="twcClient"/>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="page">
+    <header class="header">
+        <p>BAT职位猎手</p>
+
+        <div class="searchwrapper">
+            <div>
+                <input type="text" placeholder="关键字以空格分开">
+            </div>
+            <div>
+                <button>查询</button>
+            </div>
+        </div>
+
+    </header>
+    <div id="content">
+
+
+    </div>
+    <footer>
+        <button id="findMore">loading more</button>
+    </footer>
+
+    <script id="tpl" type="text/template">
+        <ul>
+            {@each data as item}
+            <li data-id="${item.id}">
+                <a href="../item/index.html?id=${item.id}&from=${item.from}">
+                <div class="main">
+                    <div class="titlewrapper">
+                        <p class="title">${hackItemName(item.name,item)} <span>[${item.from}]</span></p>
+                    </div>
+                    <div class="subwrapper">
+                        <p class="time" style="width:60%">发布时间:${checkTime(item.gmtModified)}</p>
+                        <p class="hc" style="width:40%">招聘人数:${checkHc(item.recruitNumber)}</p>
+                    </div>
+                </div>
+                <div class="right"> <span>></span> </div>
+                </a>
+            </li>
+
+
+            {@/each}
+
+        </ul>
+
+    </script>
+
+</div>
+
+
+<script src="../../lib/zepto.js"></script>
+<script src = "../../lib/juicer.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
