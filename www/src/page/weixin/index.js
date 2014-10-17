@@ -98,43 +98,49 @@
                     that.bindUi(data);
                     console.log(data)
 
+
+                    $.ajax({
+                        type: "POST",
+                        data: "data={'type':'bd'}",
+                        url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','ali')),
+                        dataType: "jsonp",
+                        jsonp: "callback",
+                        success: function (data) {
+                            that.bindUi(data);
+                            console.log(data)
+
+
+                            $.ajax({
+                                type: "POST",
+                                data: "data={'type':'bd'}",
+                                url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','qq')),
+                                dataType: "jsonp",
+                                jsonp: "callback",
+                                success: function (data) {
+                                    that.bindUi(data);
+                                    console.log(data)
+
+                                },
+                                error: function () {
+                                    alert("服务器异常")
+                                }
+                            })
+
+                        },
+                        error: function () {
+                            alert("服务器异常")
+                        }
+                    })
+
                 },
                 error: function () {
                     alert("服务器异常")
                 }
             });
 
-            $.ajax({
-                type: "POST",
-                data: "data={'type':'bd'}",
-                url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','ali')),
-                dataType: "jsonp",
-                jsonp: "callback",
-                success: function (data) {
-                    that.bindUi(data);
-                    console.log(data)
 
-                },
-                error: function () {
-                    alert("服务器异常")
-                }
-            })
 
-            $.ajax({
-                type: "POST",
-                data: "data={'type':'bd'}",
-                url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','qq')),
-                dataType: "jsonp",
-                jsonp: "callback",
-                success: function (data) {
-                    that.bindUi(data);
-                    console.log(data)
 
-                },
-                error: function () {
-                    alert("服务器异常")
-                }
-            })
         },
         makeQueryObj: function (tag,from) {
             var that = this;
