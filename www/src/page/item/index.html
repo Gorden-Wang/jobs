@@ -93,6 +93,84 @@
 
     </script>
 
+    <script id="tpl-weixin" type="text/template">
+        <header class="header" style="position: relative">
+            <p>BAT职位猎手</p>
+        </header>
+        <div id="content" style="color: black;background-color: white">
+            <ul>
+                <li>
+                    <span class="label">职位名称</span>
+
+                    <span class="content">${hackItemName(name,title)}</span>
+                </li>
+                {@if  departmentName }
+                <li>
+                    <span class="label">供职部门:</span>
+
+                    <span class="content">${departmentName}</span>
+                </li>
+                {@/if}
+                <li class="clearBox">
+                    <div>
+                        <span class="label">发布时间</span>
+
+                        <span class="content">${checkTime(gmtModified)}</span>
+                    </div>
+                    <div>
+                        <span class="label">招收人数</span>
+
+                        <span class="content">${checkHc(recruitNumber)}</span>
+                    </div>
+                </li>
+                <li class="clearBox">
+                    <div>
+                        <span class="label">工作地点</span>
+
+                        <span class="content">${workLocation}</span>
+                    </div>
+                    <div>
+                        <span class="label">工作性质</span>
+
+                        <span class="content">${hackWorkNature(workNature)}</span>
+                    </div>
+                </li>
+                <li>
+                    <p>岗位描述</p>
+
+                    <p class="content">
+                        {@each checkDescription(description) as item}
+                        {@if checkItem(item)}
+                                <span>
+                                    ${item}
+                                </span>
+                        {@/if}
+                        {@/each}
+                    </p>
+                </li>
+                <li>
+                    <p class="label">职位要求</p>
+
+                    <p class="content">
+                        {@each checkDescription(requirement) as item}
+                        {@if checkItem(item)}
+                                <span>
+                                    ${item}
+                                </span>
+                        {@/if}
+                        {@/each}
+
+                    </p>
+
+
+                </li>
+            </ul>
+
+
+        </div>
+
+    </script>
+
 </div>
 
 

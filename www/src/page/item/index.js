@@ -15,6 +15,7 @@
             that.dom.tpl = $("#tpl");
             that.dom.footer = $("footer");
             that.dom.button = $("#findMore");
+            that.dom.tplweixin = $("#tpl-weixin");
 
         },
         cacheData: function () {
@@ -49,8 +50,12 @@
         },
         bindUi: function (data) {
             var that = this;
+            if(that.data.from=="weixin"){
+                that.dom.tplwrapper.html(juicer(that.dom.tplweixin.html(), data));
+            }else{
+                that.dom.tplwrapper.html(juicer(that.dom.tpl.html(), data));
+            }
 
-            that.dom.tplwrapper.html(juicer(that.dom.tpl.html(), data));
 
             that.dom.footer.show();
 
