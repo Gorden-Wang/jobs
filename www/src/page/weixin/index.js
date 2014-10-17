@@ -110,20 +110,9 @@
             //var query = that.data.query || {};
             //var option = that.data.option || {};
 
-            var query = {
-                $or: [
-                    {'from': 'baidu'}
-                ],
-                workLocation: /北京/
-            };
+            var query = null;
 
-            var option = {
-                limit: 3,
-                skip: 0,
-                sort: [
-                    ['gmtModified', 'desc']
-                ]
-            }
+            var option = null;
 
             var searchApi = tag=='search'?'findAnyWay':'findByCompany';
             if (tag == 'top10') {
