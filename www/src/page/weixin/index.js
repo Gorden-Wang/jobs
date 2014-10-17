@@ -40,13 +40,12 @@
             var that = this;
 
             that.dom.button.on('click', function () {
-                that.data.option.skip = that.data.option.skip+10;
-                if( that.data.from == "top10"){
+                that.data.option.skip = that.data.option.skip + 10;
+                if (that.data.from == "top10") {
                     that.fetchData();
-                }else if(that.data.from == "search"){
+                } else if (that.data.from == "search") {
                     that.fetchData('search');
                 }
-
 
 
             });
@@ -66,7 +65,7 @@
         initSearch: function () {
             var that = this;
             that.bindEvent();
-            that.dom.searchWrapper.css("display","-webkit-box");
+            that.dom.searchWrapper.css("display", "-webkit-box");
         },
         init: function () {
             var that = this;
@@ -88,11 +87,43 @@
         },
         fetchData: function (tag) {
             var that = this;
-            var searchApi = tag=='search'?'findAnyWay':'searchByKeyWord';
+            var searchApi = tag == 'search' ? 'findAnyWay' : 'searchByKeyWord';
             $.ajax({
                 type: "POST",
                 data: "data={'type':'bd'}",
-                url: "http://batjobs.duapp.com/"+searchApi+"?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10')),
+                url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','baidu')),
+                dataType: "jsonp",
+                jsonp: "callback",
+                success: function (data) {
+                    that.bindUi(data);
+                    console.log(data)
+
+                },
+                error: function () {
+                    alert("服务器异常")
+                }
+            });
+
+            $.ajax({
+                type: "POST",
+                data: "data={'type':'bd'}",
+                url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','ali')),
+                dataType: "jsonp",
+                jsonp: "callback",
+                success: function (data) {
+                    that.bindUi(data);
+                    console.log(data)
+
+                },
+                error: function () {
+                    alert("服务器异常")
+                }
+            })
+
+            $.ajax({
+                type: "POST",
+                data: "data={'type':'bd'}",
+                url: "http://batjobs.duapp.com/" + searchApi + "?callback=?&data=" + JSON.stringify(that.makeQueryObj(tag || 'top10','qq')),
                 dataType: "jsonp",
                 jsonp: "callback",
                 success: function (data) {
@@ -105,7 +136,7 @@
                 }
             })
         },
-        makeQueryObj: function (tag) {
+        makeQueryObj: function (tag,from) {
             var that = this;
             //var query = that.data.query || {};
             //var option = that.data.option || {};
@@ -114,9 +145,9 @@
 
             var option = null;
 
-            var searchApi = tag=='search'?'findAnyWay':'findByCompany';
+            var searchApi = tag == 'search' ? 'findAnyWay' : 'findByCompany';
             if (tag == 'top10') {
-
+                query = {from:from};
             } else if (tag == 'search') {
                 query = that.data.query;
 
@@ -149,9 +180,9 @@
 
             });
 
-            juicer.register('hackItemName', function (itemName,item) {
+            juicer.register('hackItemName', function (itemName, item) {
 
-                return itemName?itemName:item.title
+                return itemName ? itemName : item.title
 
             });
 
